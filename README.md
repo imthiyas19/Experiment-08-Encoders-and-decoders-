@@ -62,35 +62,99 @@ D7 = X Y Z
 ### PROGRAM 
 /*
 Program for Endocers and Decoders  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: m.mohammed imthiyas
+RegisterNumber:  212222230083
 */
 
+ENCONDER:
 
+module encoder(d0,d1,d2,d3,d4,d5,d6,d7,x,y,z);
+input d0,d1,d2,d3,d4,d5,d6,d7;
+output x,y,z;
+or(x,d4,d5,d6,d7);
+or(y,d2,d3,d6,d7);
+or(z,d1,d3,d5,d7);
+endmodule
+
+DENCODER:
+
+module decoder(x,y,z,d0,d1,d2,d3,d4,d5,d6,d7);
+input x,y,z;
+output d0,d1,d2,d3,d4,d5,d6,d7;
+wire xbar,ybar,zbar;
+not(xbar,x);
+not(ybar,y);
+not(zbar,z);
+and(d0,xbar,ybar,zbar);
+and(d1,xbar,ybar,z);
+and(d2,xbar,y,zbar);
+and(d3,xbar,y,z);
+and(d4,x,ybar,z);
+and(d5,x,ybar,z);
+and(d6,x,y,zbar);
+and(d7,x,y,z);
+endmodule
 
 
 
 
 ### RTL LOGIC  
 
+### ENCODER:
+![encoder](https://github.com/imthiyas19/Experiment-08-Encoders-and-decoders-/assets/120353416/28d73c82-fde7-46d6-8e3b-c1c0275245aa)
 
 
 
+### DECODER
+
+
+
+
+
+![decoder](https://github.com/imthiyas19/Experiment-08-Encoders-and-decoders-/assets/120353416/92a42a15-4c8e-4955-99af-49cc5e2e11d5)
 
 
 
 
 ### TIMING DIGRAMS  
 
+### ENCODER:
 
+
+
+
+![encoder 1](https://github.com/imthiyas19/Experiment-08-Encoders-and-decoders-/assets/120353416/a58a8560-1812-4f65-811a-b5cbb01dade9)
+
+
+
+### DECODER
+
+
+
+![1](https://github.com/imthiyas19/Experiment-08-Encoders-and-decoders-/assets/120353416/bb699fd9-1548-4b77-af7c-56f15229902c)
 
 
 
 ### TRUTH TABLE 
 
+### ENCODER:
 
 
 
+
+
+![2](https://github.com/imthiyas19/Experiment-08-Encoders-and-decoders-/assets/120353416/804a2337-24eb-49db-bdde-bb59e8cbb645)
+
+
+### DECODER
+
+
+
+![3](https://github.com/imthiyas19/Experiment-08-Encoders-and-decoders-/assets/120353416/cf4f6dff-e2c1-4509-a41b-57d006899d33)
 
 
 ### RESULTS 
+
+Thus, 8 to 3 Encoder and 3 to 8 Decoder is implemented using verilog and its outputs is validated.
+
+
